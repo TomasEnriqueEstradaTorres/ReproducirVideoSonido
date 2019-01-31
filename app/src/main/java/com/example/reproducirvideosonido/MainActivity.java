@@ -10,7 +10,9 @@ import android.widget.Button;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
-
+    /**Icons made by https://www.flaticon.es/autores/smalllikeart
+     *is licensed by http://creativecommons.org/licenses/by/3.0/
+     Creative Commons BY 3.0     */
     //Mensaje a mostrar en el Logcat.
     private static final String AVISO = "====>>> 'AVISO' <<<====";
 
@@ -49,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
         video.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) { // envia a la pantalla de video
-                Intent irVideo = new Intent(MainActivity.this, Sonido.class);
+                Intent irVideo = new Intent(MainActivity.this, Video.class);
                 startActivity(irVideo);
             }
         });

@@ -4,6 +4,89 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/verdeClaro"
+    android:id="@+id/soundSOnido"
     tools:context=".Sonido">
+
+    <ImageButton
+        android:id="@+id/imageButtonSonidoMoneda"
+        style="@android:style/Widget.ImageButton"
+        android:layout_width="102dp"
+        android:layout_height="99dp"
+        android:layout_marginStart="61dp"
+        android:layout_marginTop="37dp"
+        android:layout_marginEnd="76dp"
+        android:background="@color/verde"
+        android:contentDescription="@string/mario"
+        android:scaleType="centerInside"
+        app:layout_constraintEnd_toStartOf="@+id/imageButtonSonidoVida"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/super_mario2" />
+
+    <ImageButton
+        android:id="@+id/imageButtonSonidoVida"
+        style="@android:style/Widget.Material.Light.ImageButton"
+        android:layout_width="102dp"
+        android:layout_height="99dp"
+        android:layout_marginTop="37dp"
+        android:layout_marginEnd="70dp"
+        android:background="@color/verde"
+        android:contentDescription="@string/zeta"
+        android:elevation="0dp"
+        android:scaleType="centerInside"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/seta" />
+
+    <Button
+        android:id="@+id/buttonSuperMarioInicio"
+        android:layout_width="236dp"
+        android:layout_height="271dp"
+        android:layout_marginStart="87dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="88dp"
+        android:background="@drawable/super_mario"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageButtonSonidoMoneda" />
+
+    <Button
+        android:id="@+id/buttonReproducir"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="71dp"
+        android:background="@drawable/reproducir"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonSuperMarioInicio" />
+
+    <Button
+        android:id="@+id/buttonPausa"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="65dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="69dp"
+        android:layout_marginBottom="71dp"
+        android:background="@drawable/pausa"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/buttonDetener"
+        app:layout_constraintStart_toEndOf="@+id/buttonReproducir"
+        app:layout_constraintTop_toBottomOf="@+id/buttonSuperMarioInicio" />
+
+    <Button
+        android:id="@+id/buttonDetener"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="71dp"
+        android:background="@drawable/detener"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonSuperMarioInicio" />
 
 </android.support.constraint.ConstraintLayout>

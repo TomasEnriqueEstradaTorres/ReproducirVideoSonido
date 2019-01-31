@@ -9,10 +9,14 @@
 
     <!--Pantalla sonido-->
     <string name="ejemsonido">Ejemplos de sonido</string>
+    <string name="mario">mario bros</string>
+    <string name="zeta">hongo</string>
+
 
 
     <!--Pantalla video-->
     <string name="ejemvideo">Ejemplos de video</string>
+
 
 
 </resources>

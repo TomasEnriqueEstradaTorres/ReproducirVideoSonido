@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/degradadoAzul"
     tools:context=".MainActivity">
 
 
@@ -12,39 +13,70 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:layout_marginBottom="32dp"
         android:text="@string/ejemplos"
         android:textColor="@color/negro"
         android:textSize="25sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/buttonSonidos"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/buttonSonidos"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="176dp"
-        android:backgroundTint="@color/azul2"
-        android:text="@string/sonido"
+        android:layout_width="138dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/sonido"
         android:textAllCaps="false"
         android:textColor="@color/verde"
         android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@+id/textView2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <Button
         android:id="@+id/buttonVideos"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="195dp"
-        android:backgroundTint="@color/verde"
-        android:text="@string/video"
+        android:layout_width="134dp"
+        android:layout_height="0dp"
+        android:background="@drawable/pelicula"
         android:textAllCaps="false"
         android:textColor="@color/blanco1"
         android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/textView3"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="60dp"
+        android:text="@string/sonido"
+        android:textAllCaps="false"
+        android:textColor="@color/azul2"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/buttonVideos"
+        app:layout_constraintEnd_toEndOf="@+id/buttonSonidos"
+        app:layout_constraintTop_toBottomOf="@+id/buttonSonidos" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="89dp"
+        android:text="@string/video"
+        android:textAllCaps="false"
+        android:textColor="@color/colorPrimary"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/buttonVideos"
+        app:layout_constraintTop_toBottomOf="@+id/buttonVideos" />
 </android.support.constraint.ConstraintLayout>
