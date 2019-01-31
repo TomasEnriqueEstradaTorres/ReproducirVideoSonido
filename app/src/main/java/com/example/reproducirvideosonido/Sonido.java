@@ -7,22 +7,29 @@ import android.media.MediaPlayer;
 import android.media.SoundPool;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.MediaController;
+import android.widget.TextView;
+import android.widget.Toast;
 
 public class Sonido extends AppCompatActivity{
 
     //datos para los sonidos
-    ImageButton sonidoMoneda, sonidoVida;
-    SoundPool sound1moneda, sound2vida; // servira pra reproducir sonidos cortos
-    int song1 = 0, song2 = 0;
+    private ImageButton sonidoMoneda, sonidoVida;
+    private SoundPool sound1moneda, sound2vida; // servira pra reproducir sonidos cortos
+    private int song1 = 0, song2 = 0;
 
     //Datos para la reproducion de musica
-    MediaPlayer mediaPlayer; // servira pra reproducir sonidos largos
-    Button reproducir, pausar, detener, reproducirPrincipal;
+    private MediaPlayer mediaPlayer; // servira pra reproducir sonidos largos
+    private Button reproducir, pausar, detener, reproducirPrincipal;
+
+    private String PARADO, PAUSA, INICIO; //sirve para almacenar los mensajes del toast
 
 
     @Override
@@ -42,9 +49,6 @@ public class Sonido extends AppCompatActivity{
         //declaro e indico que musica se usara
         mediaPlayer = MediaPlayer.create(this, R.raw.super_mario_bros_music);
 
-
-
-
         //Sonido de moneda
         sound1moneda = new SoundPool(5, AudioManager.STREAM_MUSIC, 1);
         song1 = sound1moneda.load(this, R.raw.mariobros_moneda, 1);
@@ -54,7 +58,6 @@ public class Sonido extends AppCompatActivity{
 
         //esto nos servire para saver en que canal de sonido trabajaremos
         //this.setVolumeControlStream(AudioManager.STREAM_MUSIC);
-
     }
 
 
@@ -92,8 +95,10 @@ public class Sonido extends AppCompatActivity{
             @Override
             public void onClick(View view) {
                 mediaPlayer.start();
-                //mediaPlayer.release();
-                /*
+                //Aqui se obtiene el mensaje desde el archivo string.xml para el toast personalizado
+                String INICIO = getString(R.string.inicioAudio);
+                toastPersonalizado(INICIO);
+                /* // ver como usar esta forma de hilos para evitar sobrecarga en el hilo principal
                 Thread playThread = new Thread(){
                   public void run(){
                   }
@@ -111,7 +116,10 @@ public class Sonido extends AppCompatActivity{
                 if (mediaPlayer.isPlaying()){
                     //verifica que la musica este activa despues de hacer un stop, evita un error
                     mediaPlayer.pause();
+                    String PAUSA = getString(R.string.pausaAudio);
+                    toastPersonalizado(PAUSA);
                 }
+
             }
         });
 
@@ -119,8 +127,10 @@ public class Sonido extends AppCompatActivity{
             @Override
             public void onClick(View view) {
                 mediaPlayer.stop();
-                //prepara nuevamente la musica a reproducir
+                //detiene y prepara nuevamente la musica a reproducir
                 mediaPlayer = MediaPlayer.create(getBaseContext(), R.raw.super_mario_bros_music);
+                String PARADO = getString(R.string.paradoAudio);
+                toastPersonalizado(PARADO);
             }
         });
 
@@ -128,6 +138,8 @@ public class Sonido extends AppCompatActivity{
             @Override
             public void onClick(View view) {
                 mediaPlayer.start();
+                String INICIO = getString(R.string.inicioAudio);
+                toastPersonalizado(INICIO);
             }
         });
 
@@ -155,6 +167,20 @@ public class Sonido extends AppCompatActivity{
         mediaPlayer.release();
     }
 
+    //Funcion que personaliza el mensaje del toast
+    public void toastPersonalizado(String mensaje){
+        Toast toast = new Toast(this);
+        //usamos cualquier layout como Toast
+        View toast_layout = getLayoutInflater().inflate(R.layout.toast_personalizado, (ViewGroup) findViewById(R.id.lytLayout));
+        toast.setGravity(Gravity.CENTER, 0, 0);
+        toast.setView(toast_layout);
+        //se podría definir el texto en el layout si es invariable pero lo hacemos programáticamente
+        //tenemos acceso a cualquier widget del layout del Toast
+        TextView textView = (TextView) toast_layout.findViewById(R.id.mensajeToast);
+        textView.setText(mensaje);
+        toast.setDuration(Toast.LENGTH_SHORT);
+        toast.show();
+    }
 
 
 }

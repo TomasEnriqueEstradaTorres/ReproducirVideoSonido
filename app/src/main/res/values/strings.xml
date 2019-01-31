@@ -12,10 +12,23 @@
     <string name="mario">mario bros</string>
     <string name="zeta">hongo</string>
 
+    <string name="paradoAudio">Audio Parado</string>
+    <string name="pausaAudio">Audio Pausado</string>
+    <string name="inicioAudio">Audio Iniciado</string>
+
 
 
     <!--Pantalla video-->
     <string name="ejemvideo">Ejemplos de video</string>
+
+    <string name="videoStandar">Reproduccion Standar</string>
+    <string name="videoConfigurado">Reproduccion Configurada</string>
+
+    <string name="reinicioVideo">Video Reiniciado</string>
+    <string name="paradoVideo">Video Parado</string>
+    <string name="pausaVideo">Video Pausado</string>
+    <string name="inicioVideo">Video Iniciado</string>
+
 
 
 

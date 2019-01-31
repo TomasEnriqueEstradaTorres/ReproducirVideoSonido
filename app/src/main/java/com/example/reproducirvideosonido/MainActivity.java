@@ -16,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
     //Mensaje a mostrar en el Logcat.
     private static final String AVISO = "====>>> 'AVISO' <<<====";
 
-    Button sonido, video;
+    private Button sonido, video;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

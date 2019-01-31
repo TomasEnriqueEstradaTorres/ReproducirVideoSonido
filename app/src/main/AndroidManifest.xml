@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Video"></activity>
+        <activity android:name=".VideoConfigurado"></activity>
+        <activity android:name=".VideoStandar" />
+        <activity android:name=".Video" />
         <activity android:name=".Sonido" />
         <activity android:name=".MainActivity">
             <intent-filter>
