@@ -1,3 +1,18 @@
 <resources>
     <string name="app_name">ReproducirVideoSonido</string>
+
+
+    <!--Primera pantalla-->
+    <string name="sonido">Sonidos</string>
+    <string name="video">Videos</string>
+    <string name="ejemplos">Ejemplos de sonido y video</string>
+
+    <!--Pantalla sonido-->
+    <string name="ejemsonido">Ejemplos de sonido</string>
+
+
+    <!--Pantalla video-->
+    <string name="ejemvideo">Ejemplos de video</string>
+
+
 </resources>
