@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/verdeClaro"
-    android:id="@+id/soundSOnido"
+    android:id="@+id/soundSonido"
     tools:context=".Sonido">
 
     <ImageButton

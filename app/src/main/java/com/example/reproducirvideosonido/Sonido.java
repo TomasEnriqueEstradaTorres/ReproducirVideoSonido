@@ -18,7 +18,10 @@ import android.widget.MediaController;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class Sonido extends AppCompatActivity{
+public class Sonido extends AppCompatActivity implements MediaController.MediaPlayerControl {
+
+    /**Esta implementacion es para poder agregar los metodos necesarios para el controlador
+     * por defecto de la musica ===>> MediaController.MediaPlayerControl  */
 
     //datos para los sonidos
     private ImageButton sonidoMoneda, sonidoVida;
@@ -27,8 +30,8 @@ public class Sonido extends AppCompatActivity{
 
     //Datos para la reproducion de musica
     private MediaPlayer mediaPlayer; // servira pra reproducir sonidos largos
+    private MediaController mediaController; // servira para controlar la reproduccion del audio por medio de una barra
     private Button reproducir, pausar, detener, reproducirPrincipal;
-
     private String PARADO, PAUSA, INICIO; //sirve para almacenar los mensajes del toast
 
 
@@ -48,6 +51,10 @@ public class Sonido extends AppCompatActivity{
 
         //declaro e indico que musica se usara
         mediaPlayer = MediaPlayer.create(this, R.raw.super_mario_bros_music);
+        // con esto pondremos los controles para el audio por defecto
+        mediaController = new MediaController(this);
+        mediaController.setMediaPlayer(this);
+        mediaController.setAnchorView(findViewById(R.id.soundSonido)); // indica en que pantalla aparece la barra
 
         //Sonido de moneda
         sound1moneda = new SoundPool(5, AudioManager.STREAM_MUSIC, 1);
@@ -56,15 +63,8 @@ public class Sonido extends AppCompatActivity{
         sound2vida = new SoundPool(5, AudioManager.STREAM_MUSIC, 1);
         song2 = sound2vida.load(this, R.raw.mariobros_vidaextra, 1);
 
-        //esto nos servire para saver en que canal de sonido trabajaremos
+        //esto nos servire para saber en que canal de sonido trabajaremos
         //this.setVolumeControlStream(AudioManager.STREAM_MUSIC);
-    }
-
-
-    @Override
-    public void onStart() {
-        super.onStart();
-
     }
 
     public void onResume() {
@@ -142,23 +142,6 @@ public class Sonido extends AppCompatActivity{
                 toastPersonalizado(INICIO);
             }
         });
-
-    }
-
-    public void onRestart() {
-        super.onRestart();
-
-    }
-
-
-    public void onPause() {
-        super.onPause();
-
-    }
-
-    public void onStop() {
-        super.onStop();
-
     }
 
     public void onDestroy() {
@@ -182,7 +165,75 @@ public class Sonido extends AppCompatActivity{
         toast.show();
     }
 
+    //----------------------------------------------------------------------------------------------
+    //----------------------------------------------------------------------------------------------
+    //Este metodo servira para mostrar el seek en la pantalla (barra de audio)
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        mediaController.show();
+        return false;
+    }
+    //----------------------------------------------------------------------------------------------
+    // metodos implementados de la interfaz para poder usar el seek(barra de audio)
+    @Override
+    public void start() {
+        mediaPlayer.start();
+    }
 
+    @Override
+    public void pause() {
+        // Cuando el usuario toca el botón de pausa
+        mediaPlayer.pause();
+    }
+
+    @Override
+    public int getDuration() {
+        // Vuelve la duración de la pista de audio
+        return mediaPlayer.getDuration();
+    }
+
+    @Override
+    public int getCurrentPosition() {
+        // Vuelve la posición actual en la pista de audio
+        return mediaPlayer.getCurrentPosition();
+    }
+
+    @Override
+    public void seekTo(int pos) {
+        // Para ir a una posición de la pista
+        mediaPlayer.seekTo(pos);
+    }
+
+    @Override
+    public boolean isPlaying() {
+        // Vuelve cierto cuando se está reproduciendo audio
+        return mediaPlayer.isPlaying();
+    }
+
+    @Override
+    public int getBufferPercentage() {
+        return 0;
+    }
+
+    @Override
+    public boolean canPause() {
+        return true; // este hay que cambiarlo a true, por defecto viene en false
+    }
+
+    @Override
+    public boolean canSeekBackward() {
+        return true; // cambiar a true porque asi se puede controlar por medio de la barra de audio
+    }
+
+    @Override
+    public boolean canSeekForward() {
+        return true; // cambiar a true porque asi se puede controlar por medio de la barra de audio
+    }
+
+    @Override
+    public int getAudioSessionId() {
+        return 0;
+    }
 }
 
 
